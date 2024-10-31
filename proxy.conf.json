@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "http://worldcoupons-001-site1.ltempurl.com",
+      "secure": false,
+      "changeOrigin": true  }
+  }
+  
