@@ -24,6 +24,8 @@ export class StoreCreateComponent implements OnInit{
   };
   categories: Category[] = [];
   selectedImage: File | null = null;
+  imagePreview: string | ArrayBuffer | null = null;
+
   ngOnInit() {
     // Fetch categories from your service and assign them to this.categories
     this.loadCategories();
@@ -39,7 +41,12 @@ export class StoreCreateComponent implements OnInit{
   onFileChange(event: any) {
     if (event.target.files && event.target.files.length) {
       this.selectedImage = event.target.files[0] as File;
-    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(this.selectedImage);
+  }
   }
 
   onSubmit() {

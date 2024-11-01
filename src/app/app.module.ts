@@ -24,6 +24,7 @@ import { CouponEditComponent } from './adminPanel/coupon/coupon-edit/coupon-edit
 import { CouponIndexComponent } from './adminPanel/coupon/coupon-index/coupon-index.component';
 import { CouponCreateComponent } from './adminPanel/coupon/coupon-create/coupon-create.component';
 import { StoreService } from './services/store/store.service';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { StoreService } from './services/store/store.service';
     BannerEditComponent,
     CouponEditComponent,
     CouponIndexComponent,
-    CouponCreateComponent
+    CouponCreateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

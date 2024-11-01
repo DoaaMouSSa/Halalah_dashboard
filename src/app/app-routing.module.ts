@@ -14,6 +14,7 @@ import { BannerEditComponent } from './adminPanel/banner/banner-edit/banner-edit
 import { CouponIndexComponent } from './adminPanel/coupon/coupon-index/coupon-index.component';
 import { CouponCreateComponent } from './adminPanel/coupon/coupon-create/coupon-create.component';
 import { CouponEditComponent } from './adminPanel/coupon/coupon-edit/coupon-edit.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
  { path: '', component:MainComponent,children:[
@@ -36,10 +37,11 @@ const routes: Routes = [
      { path: 'dashboard/banner/edit/:id', component: BannerEditComponent },
 //   ] },
 
-// { path: 'login', component: LoginComponent },
 // { path: 'register', component: RegisterComponent},
 // { path: '**', component: NotFoundComponent },
 ] },
+{ path: 'login', component: LoginComponent },
+
 ];
 
 @NgModule({
