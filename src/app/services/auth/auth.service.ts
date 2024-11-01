@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class AuthService {
          'Accept': 'application/json',
          'Authorization': `Basic ${encodedCredentials}`,
       });
-        return this._http.post<any>("/api/auth/login", userData,{headers}).pipe(tap(res =>{
+        return this._http.post<any>(`${environment.apiUrl}/auth/login`, userData,{headers}).pipe(tap(res =>{
         const token = res
         if(token){
           localStorage.setItem('token', token);
