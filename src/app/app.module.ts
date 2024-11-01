@@ -23,6 +23,7 @@ import { BannerEditComponent } from './adminPanel/banner/banner-edit/banner-edit
 import { CouponEditComponent } from './adminPanel/coupon/coupon-edit/coupon-edit.component';
 import { CouponIndexComponent } from './adminPanel/coupon/coupon-index/coupon-index.component';
 import { CouponCreateComponent } from './adminPanel/coupon/coupon-create/coupon-create.component';
+import { StoreService } from './services/store/store.service';
 
 @NgModule({
   declarations: [
@@ -50,10 +51,11 @@ import { CouponCreateComponent } from './adminPanel/coupon/coupon-create/coupon-
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    StoreService
   ],
   bootstrap: [AppComponent]
 })

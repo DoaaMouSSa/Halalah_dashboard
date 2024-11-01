@@ -33,7 +33,7 @@ export class CouponService {
       'Accept': 'application/json',
        'Authorization': `Basic ${encodedCredentials}`,
     });
-      return this._http.post<any>("/api/Category/Add", data,{headers});
+      return this._http.post<any>("/api/Coupon/Add", data,{headers});
     }
       //get by id
       GetById(id:string): Observable<any> {
@@ -44,7 +44,7 @@ export class CouponService {
           'Accept': 'application/json',
            'Authorization': `Basic ${encodedCredentials}`,
         });
-        return this._http.get<any>("/api/Category/GetById?id="+id,{headers});
+        return this._http.get<any>("/api/Coupon/GetById?id="+id,{headers});
       }
      //update
     updateData(id:string,data: any): Observable<any> {
@@ -56,7 +56,7 @@ export class CouponService {
        'Authorization': `Basic ${encodedCredentials}`,
     });
   
-      return this._http.put<any>("/api/Category/Update/"+id, data,{headers});
+      return this._http.put<any>("/api/Coupon/Update/"+id, data,{headers});
     }
   
      //delete
@@ -68,7 +68,7 @@ export class CouponService {
         'Accept': 'application/json',
          'Authorization': `Basic ${encodedCredentials}`,
       });
-      return this._http.delete<void>("/api/Category/Delete?id="+id,{headers});
+      return this._http.delete<void>("/api/Coupon/Delete?id="+id,{headers});
     }
 }
 

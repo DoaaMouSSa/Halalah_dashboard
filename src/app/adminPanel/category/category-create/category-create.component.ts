@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class CategoryCreateComponent {
   category = { arName: '', enName: '' };
   selectedImage: File | null = null;
+  formSubmitted = false;
 
   constructor(private _categoryService: CategoryService, private _router: Router) {}
 
@@ -21,8 +22,12 @@ export class CategoryCreateComponent {
 
   onSubmit(event: Event) {
     event.preventDefault();
-    console.log("Submit button clicked");  // Debugging log
+    this.formSubmitted = true;  // Mark form as submitted for validation check
 
+    if (!this.category.arName || !this.category.enName || !this.selectedImage) {
+      console.log("Please fill in all required fields.");
+      return;
+    }
     if (!this.selectedImage) {
       console.log("Image file is missing");
       return;
