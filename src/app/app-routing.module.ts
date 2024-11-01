@@ -15,26 +15,27 @@ import { CouponIndexComponent } from './adminPanel/coupon/coupon-index/coupon-in
 import { CouponCreateComponent } from './adminPanel/coupon/coupon-create/coupon-create.component';
 import { CouponEditComponent } from './adminPanel/coupon/coupon-edit/coupon-edit.component';
 import { LoginComponent } from './auth/login/login.component';
+import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
  { path: '', component:MainComponent,children:[
-    { path: '', redirectTo: '/dashboard',pathMatch:'full' },
-      { path: 'dashboard', component: DashboardComponent },
-     { path: 'dashboard/category', component: CategoryIndexComponent },
-     { path: 'dashboard/category/create', component: CategoryCreateComponent },
-     { path: 'dashboard/category/edit/:id', component: CategoryEditComponent },
-     { path: 'dashboard/store', component: StoreIndexComponent },
-     { path: 'dashboard/store/create', component: StoreCreateComponent },
-     { path: 'dashboard/store/edit/:id', component: StoreEditComponent },
-     { path: 'dashboard/coupon', component: CouponIndexComponent },
-     { path: 'dashboard/coupon/create', component: CouponCreateComponent },
-     { path: 'dashboard/coupon/edit/:id', component: CouponEditComponent },
+    { path: '', redirectTo: '/login',pathMatch:'full' },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+     { path: 'dashboard/category', component: CategoryIndexComponent, canActivate: [authGuard] },
+     { path: 'dashboard/category/create', component: CategoryCreateComponent, canActivate: [authGuard] },
+     { path: 'dashboard/category/edit/:id', component: CategoryEditComponent, canActivate: [authGuard] },
+     { path: 'dashboard/store', component: StoreIndexComponent, canActivate: [authGuard] },
+     { path: 'dashboard/store/create', component: StoreCreateComponent, canActivate: [authGuard] },
+     { path: 'dashboard/store/edit/:id', component: StoreEditComponent , canActivate: [authGuard]},
+     { path: 'dashboard/coupon', component: CouponIndexComponent, canActivate: [authGuard] },
+     { path: 'dashboard/coupon/create', component: CouponCreateComponent, canActivate: [authGuard] },
+     { path: 'dashboard/coupon/edit/:id', component: CouponEditComponent, canActivate: [authGuard] },
 //     { path: 'dashboard/offer', component: OfferIndexComponent },
 //     { path: 'dashboard/offer/create', component: OfferCreateComponent },
 //     { path: 'dashboard/offer/edit/:id', component: OfferEditComponent },
-     { path: 'dashboard/banner', component :BannerIndexComponent},
-     { path: 'dashboard/banner/create', component: BannerCreateComponent },
-     { path: 'dashboard/banner/edit/:id', component: BannerEditComponent },
+     { path: 'dashboard/banner', component :BannerIndexComponent, canActivate: [authGuard]},
+     { path: 'dashboard/banner/create', component: BannerCreateComponent, canActivate: [authGuard] },
+     { path: 'dashboard/banner/edit/:id', component: BannerEditComponent, canActivate: [authGuard] },
 //   ] },
 
 // { path: 'register', component: RegisterComponent},
