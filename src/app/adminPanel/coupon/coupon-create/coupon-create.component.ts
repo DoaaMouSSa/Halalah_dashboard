@@ -2,16 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CouponService } from '../../../services/coupon/coupon.service';
 import { CategoryService } from '../../../services/category/category.service';
 import { StoreService } from '../../../services/store/store.service';
-import { Router } from 'express';
-interface Category {
-  id: number;  // Adjust the type as needed
-  enName: string; // Adjust the type as needed
-}
+import { Router } from '@angular/router';
 
-interface Store {
-  id: number;  // Adjust the type as needed
-  enName: string; // Adjust the type as needed
-}
 @Component({
   selector: 'app-coupon-create',
   templateUrl: './coupon-create.component.html',
@@ -31,7 +23,8 @@ export class CouponCreateComponent implements OnInit{
   };
   constructor(private _storeService:StoreService,
     private _categoryService:CategoryService,
-    private _couponService:CouponService
+    private _couponService:CouponService,
+    private _router: Router
   ) {}
   ngOnInit() {
     this.loadStores();
@@ -50,9 +43,9 @@ export class CouponCreateComponent implements OnInit{
   }
   onSubmit() {
     this._couponService.postData(this.coupon).subscribe(
-      response => {
-        console.log('Coupon sent successfully:', response);
-      },
+        response => {
+          this._router.navigate(['/dashboard/coupon']);
+        },
       error => {
         console.error('Error sending coupon:', error);
       }

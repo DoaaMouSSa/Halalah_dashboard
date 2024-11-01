@@ -1,54 +1,4 @@
 <div>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="bg-grey-lighter min-h-screen flex flex-col">
-      <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-          <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-      <h1 class="mb-8 text-3xl text-center">login</h1>
-  <!-- <button @click="changeLanguage('ar')">lang</button> -->
-  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-     Email
-    </label>
-              <input
-                  type="text"
-                  class="block border border-grey-light w-full p-3 rounded mb-4"
-                  formControlName="email" type="email"
-                  />
-                  <div *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched">
-                    <p *ngIf="loginForm.get('email')!.errors?.['required']" class="text-red-600">Email is required.</p>
-                    <p *ngIf="loginForm.get('email')!.errors?.['email']" class="text-red-600">
-                      Enter a valid email.</p>
-                  </div>
-  
-                  <!-- <p class="text-blue-600" v-if="v$.email.$error">{{ v$.email.$errors['email'].$message }}</p> -->
-                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                     password
-                  </label>
-              <input
-                  type="password"
-                  class="block border border-grey-light w-full p-3 rounded mb-4"
-                  formControlName="password" type="password"
-                  />
-                  <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                    <p *ngIf="loginForm.get('password')?.errors?.['required']" class="text-red-600">Password is required.</p>
-                  </div>
-              <button  [disabled]="loginForm!.invalid"  type="submit" class="py-2 px-5 bg-violet-500 text-white font-semibold rounded-md shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75 cursor-pointer">
-                  login
-  </button>
-  <div class="text-grey-dark mt-6">
-                       'havenoaccount'
-                      <a routerLink="/register" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">
-                          Register
-                      </a>.
-                  </div>
-  
-          </div>
-          </div>
-    </div>
-  </form>
-
-
-
-
   <section class="vh-100" style="background-color: #fff4ea">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -73,19 +23,15 @@
                       <input type="email" id="form2Example17" class="form-control form-control-lg" 
                       placeholder="Email Address"
                       formControlName="email" type="email"/>
+                      <!-- <p ngClass="text-danger" *ngIf="loginForm.get('email')?.errors?.['required']" >Email is required.</p> -->
+
                     </div>
-                    <div *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched">
-                      <p *ngIf="loginForm.get('email')!.errors?.['required']" class="text-red-600">Email is required.</p>
-                      <p *ngIf="loginForm.get('email')!.errors?.['email']" class="text-red-600">
-                        Enter a valid email.</p>
-                    </div>
+                
                     <div data-mdb-input-init class="form-outline mb-4">
                       <input type="password" id="form2Example27" class="form-control form-control-lg" 
                       placeholder="Password"
                       formControlName="password" type="password"/>
-                      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                        <p *ngIf="loginForm.get('password')?.errors?.['required']" class="text-red-600">Password is required.</p>
-                      </div>
+                        <!-- <p ngClass="text-danger" *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</p> -->
                     </div>
   
                     <div class="pt-1 mb-4">
