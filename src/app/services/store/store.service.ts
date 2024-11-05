@@ -31,7 +31,7 @@ export class StoreService {
       filteredDiscount: false,
       filteredLatest: false
     };
-    return this._http.post<any>(`${environment.apiUrl}/Store/GetByPageNumber`, body, { headers });
+    return this._http.post<any>(`api/Store/GetByPageNumber`, body, { headers });
   }
   //create 
     //add
@@ -43,7 +43,7 @@ export class StoreService {
       'Accept': 'application/json',
        'Authorization': `Basic ${encodedCredentials}`,
     });
-      return this._http.post<any>(`${environment.apiUrl}/Store/Add`, data,{headers});
+      return this._http.post<any>(`api/Store/Add`, data,{headers});
     }
       //get by id
       GetById(id:string): Observable<any> {
@@ -54,7 +54,7 @@ export class StoreService {
           'Accept': 'application/json',
            'Authorization': `Basic ${encodedCredentials}`,
         });
-        return this._http.get<any>(`${environment.apiUrl}/Store/GetById?id=`+id,{headers});
+        return this._http.get<any>(`api/Store/GetById?id=`+id,{headers});
       }
      //update
     updateData(id:string,data: any): Observable<any> {
@@ -66,7 +66,7 @@ export class StoreService {
        'Authorization': `Basic ${encodedCredentials}`,
     });
   
-      return this._http.put<any>(`${environment.apiUrl}/Store/Update/`+id, data,{headers});
+      return this._http.put<any>(`api/Store/Update/`+id, data,{headers});
     }
   
      //delete
@@ -78,6 +78,6 @@ export class StoreService {
         'Accept': 'application/json',
          'Authorization': `Basic ${encodedCredentials}`,
       });
-      return this._http.delete<void>(`${environment.apiUrl}/Store/Delete?id=`+id,{headers});
+      return this._http.delete<void>(`api/Store/Delete?id=`+id,{headers});
     }
 }

@@ -16,6 +16,9 @@ import { CouponCreateComponent } from './adminPanel/coupon/coupon-create/coupon-
 import { CouponEditComponent } from './adminPanel/coupon/coupon-edit/coupon-edit.component';
 import { LoginComponent } from './auth/login/login.component';
 import { authGuard } from './guard/auth.guard';
+import { NotificationIndexComponent } from './adminPanel/notification/notification-index/notification-index.component';
+import { NotificationCreateComponent } from './adminPanel/notification/notification-create/notification-create.component';
+import { CouponRemovedComponent } from './adminPanel/coupon/coupon-removed/coupon-removed.component';
 
 const routes: Routes = [
  { path: '', component:MainComponent,children:[
@@ -28,6 +31,7 @@ const routes: Routes = [
      { path: 'dashboard/store/create', component: StoreCreateComponent, canActivate: [authGuard] },
      { path: 'dashboard/store/edit/:id', component: StoreEditComponent , canActivate: [authGuard]},
      { path: 'dashboard/coupon', component: CouponIndexComponent, canActivate: [authGuard] },
+     { path: 'dashboard/coupon/removed', component: CouponRemovedComponent, canActivate: [authGuard] },
      { path: 'dashboard/coupon/create', component: CouponCreateComponent, canActivate: [authGuard] },
      { path: 'dashboard/coupon/edit/:id', component: CouponEditComponent, canActivate: [authGuard] },
 //     { path: 'dashboard/offer', component: OfferIndexComponent },
@@ -36,10 +40,8 @@ const routes: Routes = [
      { path: 'dashboard/banner', component :BannerIndexComponent, canActivate: [authGuard]},
      { path: 'dashboard/banner/create', component: BannerCreateComponent, canActivate: [authGuard] },
      { path: 'dashboard/banner/edit/:id', component: BannerEditComponent, canActivate: [authGuard] },
-//   ] },
-
-// { path: 'register', component: RegisterComponent},
-// { path: '**', component: NotFoundComponent },
+     { path: 'dashboard/notification', component :NotificationIndexComponent, canActivate: [authGuard]},
+     { path: 'dashboard/notification/create', component: NotificationCreateComponent, canActivate: [authGuard] },
 ] },
 { path: 'login', component: LoginComponent },
 

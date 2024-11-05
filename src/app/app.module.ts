@@ -25,6 +25,9 @@ import { CouponIndexComponent } from './adminPanel/coupon/coupon-index/coupon-in
 import { CouponCreateComponent } from './adminPanel/coupon/coupon-create/coupon-create.component';
 import { StoreService } from './services/store/store.service';
 import { LoginComponent } from './auth/login/login.component';
+import { NotificationIndexComponent } from './adminPanel/notification/notification-index/notification-index.component';
+import { NotificationCreateComponent } from './adminPanel/notification/notification-create/notification-create.component';
+import { CouponRemovedComponent } from './adminPanel/coupon/coupon-removed/coupon-removed.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { LoginComponent } from './auth/login/login.component';
     CouponEditComponent,
     CouponIndexComponent,
     CouponCreateComponent,
-    LoginComponent
+    LoginComponent,
+    NotificationIndexComponent,
+    NotificationCreateComponent,
+    CouponRemovedComponent,
   ],
   imports: [
     BrowserModule,
