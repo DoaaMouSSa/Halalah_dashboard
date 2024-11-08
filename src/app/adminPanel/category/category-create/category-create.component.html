@@ -25,7 +25,8 @@
       </div>
     </div>
     </div>
-
+    <div class="row">
+      <div class="col-md-6">
       <div class="form-group">
         <label for="image">Image</label>
         <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
@@ -33,9 +34,18 @@
           Image is required.
         </div>
       </div>
-  
+    </div>
+    <div class="col-md-6">
+
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" alt="Image preview" width="200">
+      </div>
+    </div>
+  </div>
+
       <button type="submit" class="btn btn-gradient-danger me-2" [disabled]="categoryForm.invalid">Save</button>
-      <button class="btn btn-light">Cancel</button>  </form>
+      <button class="btn btn-light" (click)="cancel()">Cancel</button> 
+     </form>
   </div>
   </div>
   </div>

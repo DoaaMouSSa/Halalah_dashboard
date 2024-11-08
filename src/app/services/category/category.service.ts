@@ -23,6 +23,16 @@ export class CategoryService {
     });
   return  this._http.get<any>('/api/Category/Get',{headers});
   }
+  getByName(name: string): Observable<any> {
+    const Username = '11195296';
+    const Password = '60-dayfreetrial';
+    const encodedCredentials = btoa(`${Username}:${Password}`);
+    const headers = new HttpHeaders({
+       'Accept': 'application/json',
+       'Authorization': `Basic ${encodedCredentials}`,
+    });
+      return this._http.get<any>("/api/Category/GetByName?name="+name,{headers});
+    }
   //create 
     //add
     postData(data: any): Observable<any> {
@@ -56,7 +66,7 @@ export class CategoryService {
        'Authorization': `Basic ${encodedCredentials}`,
     });
   
-      return this._http.put<any>("/api/Category/Update/"+id, data,{headers});
+      return this._http.patch<any>("/api/Category/Update?id="+id, data,{headers});
     }
   
      //delete

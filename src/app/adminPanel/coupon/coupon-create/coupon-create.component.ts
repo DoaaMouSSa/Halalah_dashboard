@@ -15,7 +15,8 @@ export class CouponCreateComponent implements OnInit{
   coupon = {
     code: '',
     discount: 0,
-    expiry_date: new Date().toISOString(),
+    arSmallDesc:'',
+    enSmallDesc:'',
     isActive: false,
     link: '',
     storeId: 0,

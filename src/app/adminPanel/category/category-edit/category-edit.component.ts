@@ -11,7 +11,10 @@ export class CategoryEditComponent {
 
   categoryId!: number;
   categoryForm!: FormGroup;
-  image: string = '';  // Declare a variable to store the image URL
+  selectedFile!: File | null;
+  imagePreview: string | null = null;
+  formSubmitted = false; // Track form submission for validation feedback
+
   constructor(
     private fb: FormBuilder,
     private _categoryService: CategoryService,
@@ -20,7 +23,7 @@ export class CategoryEditComponent {
   ) {
     this.categoryForm = this.fb.group({
       arName: ['', [Validators.required]],
-      enName: [''],
+      enName: ['',[Validators.required]],
     });
     
   }
@@ -38,14 +41,12 @@ export class CategoryEditComponent {
   fillForm() {
     this._categoryService.GetById(this.categoryId.toString()).subscribe(
       category => {
-        console.log('Category data:', category.payload); // Log the returned category
         if (category) {
           this.categoryForm.patchValue({
             arName: category.payload.arName,
             enName: category.payload.enName,
-          });       
-          this.image = category.payload.image;
-
+          });
+          this.imagePreview = category.payload.image; // Set the initial image preview
         } else {
           console.error('No data returned for the given ID');
         }
@@ -55,12 +56,36 @@ export class CategoryEditComponent {
       }
     );
   }
+
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+
+      // Display a preview of the selected new image
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result as string;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
+
   onSubmit() {
+    this.formSubmitted = true; // Set to trigger validation feedback
     if (this.categoryForm.valid) {
-      this._categoryService.updateData(this.categoryId.toString(), this.categoryForm.value).subscribe(
+      const formData = new FormData();
+      formData.append('id', this.categoryId.toString());
+      formData.append('arName', this.categoryForm.get('arName')?.value);
+      formData.append('enName', this.categoryForm.get('enName')?.value);
+      if (this.selectedFile) {
+        formData.append('image', this.selectedFile);
+      }
+
+      this._categoryService.updateData(this.categoryId.toString(), formData).subscribe(
         response => {
           console.log('Category updated successfully:', response);
-          this.router.navigate(['/dashboard/category/index']);
+          this.router.navigate(['/dashboard/category']);
         },
         error => {
           console.error('Error updating Category:', error);
@@ -70,5 +95,8 @@ export class CategoryEditComponent {
       console.log('Form is invalid');
     }
   }
-}
 
+  cancel() {
+    this.router.navigate(['/dashboard/category']); // Navigate to index on cancel
+  }
+}

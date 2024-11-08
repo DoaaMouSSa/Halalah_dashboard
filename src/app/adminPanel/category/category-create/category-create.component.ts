@@ -11,12 +11,18 @@ export class CategoryCreateComponent {
   category = { arName: '', enName: '' };
   selectedImage: File | null = null;
   formSubmitted = false;
+  imagePreview: string | ArrayBuffer | null = null;
 
   constructor(private _categoryService: CategoryService, private _router: Router) {}
 
   onFileChange(event: any) {
     if (event.target.files && event.target.files.length) {
       this.selectedImage = event.target.files[0] as File;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(this.selectedImage);
     }
   }
 
@@ -47,6 +53,7 @@ export class CategoryCreateComponent {
       }
     );
   }
-
-      }
-      
+  cancel() {
+    this._router.navigate(['/dashboard/category']); // Navigate to index on cancel
+  }
+}

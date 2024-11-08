@@ -22,16 +22,28 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
+        <label for="arSmallDesc">Arabic Description</label>
+        <input type="text" id="arSmallDesc" name="arSmallDesc" class="form-control" [(ngModel)]="coupon.arSmallDesc" #name="ngModel">
+      </div>
+    </div>
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="enSmallDesc">English Description</label>
+        <input type="text" id="enSmallDesc" name="enSmallDesc" class="form-control" [(ngModel)]="coupon.enSmallDesc" #name="ngModel">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
         <label for="link">Link</label>
         <input type="text" id="link" name="link" class="form-control" [(ngModel)]="coupon.link" #name="ngModel">
       </div>
     </div>
     <div class="col-md-6">
 
-      <div class="form-group">
-        <label for="expiry_date">Expiry Date</label>
-        <input type="date" id="expiry_date" name="expiry_date" class="form-control" [(ngModel)]="coupon.expiry_date" #name="ngModel">
-      </div>
+    
     </div>
   </div>
   <div class="row">
