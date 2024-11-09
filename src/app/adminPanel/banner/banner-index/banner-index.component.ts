@@ -27,7 +27,7 @@ export class BannerIndexComponent implements OnInit {
     );
   }
   goToUpdatedPage(id:number){
-    this._router.navigate(['/dashboard/category/edit/'+id]);
+    this._router.navigate(['/dashboard/banner/edit/'+id]);
     }
   goToDeleteData(id:any){
     this._bannerService.deleteData(id).subscribe(

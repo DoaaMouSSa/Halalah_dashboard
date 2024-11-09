@@ -9,17 +9,18 @@ import { Router } from '@angular/router';
 })
 export class BannerCreateComponent {
   selectedImage: File | null = null;
-
+  imagePreview: string | ArrayBuffer | null = null;
+  banner = { link: ''};
   constructor(private _bannerService: BannerService, private _router: Router) {}
-test(){
-  console.log('test')
 
-}
   onFileChange(event: any) {
-    alert('start')
     if (event.target.files && event.target.files.length) {
       this.selectedImage = event.target.files[0] as File;
-      alert(this.selectedImage)
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(this.selectedImage);
     }
   }
 
@@ -31,6 +32,7 @@ test(){
     }
 
     const formData = new FormData();
+    formData.append('link', this.banner.link);
     formData.append('image', this.selectedImage, this.selectedImage.name);
 
         this._bannerService.postData(formData).subscribe(
@@ -42,5 +44,7 @@ test(){
       }
     );
   }
-
+  cancel() {
+    this._router.navigate(['/dashboard/banner']); // Navigate to index on cancel
+  }
       }

@@ -14149,6 +14149,9 @@ dl {
         background: #EF333D
         ;
       }
+      .sidebar .nav .nav-item:hover .nav-link i {
+        color: white!important;
+      }
       .mdi:hover{
         color:white;
       }

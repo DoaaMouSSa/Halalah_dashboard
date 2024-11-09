@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 })
 export class NotificationCreateComponent{
   notification = {
-    title: '',
-    content: '',
+    arTitle: '',
+    arBody: '',
+    enTitle: '',
+    enBody: '',
   };
   constructor(private _notificationService:NotificationService,
         private _router: Router
